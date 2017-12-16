@@ -19,7 +19,7 @@
     "develop": "gatsby develop",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gatsby build && git push origin `git subtree split --prefix public master`:master --force"
+    "deploy": "gatsby build && git subtree push --prefix public origin master"
   },
   "devDependencies": {
     "gh-pages": "^1.1.0",
