@@ -4,9 +4,10 @@ import ProfilePic from "../me.jpeg";
 import BioPic from "../me2.jpg";
 import styled from "styled-components";
 
-const FlexContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: 33% 67%;
+  grid-template-rows: 100vh auto;
 `;
 
 const WelcomeContainer = styled.div`
@@ -16,7 +17,7 @@ const WelcomeContainer = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 100vh;
+  grid-column: 1 / -1;
 `;
 
 const WelcomeTextContainer = styled.div`
@@ -24,17 +25,19 @@ const WelcomeTextContainer = styled.div`
   bottom: 100px;
   left: 100px;
   color: white;
+
+  @media only screen and (max-width: 768px) {
+    left: 10px;
+  }
 `;
 
 const WelcomeText = styled.h1`
   font-weight: 100;
   font-size: 5em;
-`;
 
-const IntroContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  @media only screen and (max-width: 768px) {
+    font-size: 4em;
+  }
 `;
 
 const ColorContainer = styled.div`
@@ -42,13 +45,21 @@ const ColorContainer = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  flex: 2;
+  grid-column: 1 / 2;
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const IntroText = styled.p`
   padding: 30px 30px;
   margin-bottom: 0;
-  flex: 3;
+  grid-column: 2 / -1;
+
+  @media only screen and (max-width: 768px) {
+    grid-column: 1 / -1;
+  }
 `;
 
 const StyledLink = styled.a`
@@ -59,7 +70,7 @@ const ContactContainer = styled.div`
   border-top: 1px solid #eee;
   padding: 30px 0 150px 0;
   text-align: center;
-  flex: 1;
+  grid-column: 1 / -1;
 `;
 
 const ContactHeading = styled.h1`
@@ -80,48 +91,46 @@ const EmailIcon = styled.i`
 `;
 
 const IndexPage = () => (
-  <FlexContainer>
+  <GridContainer>
     <WelcomeContainer>
       <WelcomeTextContainer>
         <WelcomeText>Eric Yu</WelcomeText>
       </WelcomeTextContainer>
     </WelcomeContainer>
-    <IntroContainer>
-      <ColorContainer />
-      <IntroText>
-        Hey there! I'm Eric, and I'm a student at Yale University studying
-        computer science. I love building things that help others.
-        <br />
-        <br />
-        At Yale, I've led student engineering teams to build our university's{" "}
-        <StyledLink href="http://map.yale.edu">CampusMap</StyledLink> and the{" "}
-        <StyledLink href="http://www.yaledailynews.com">
-          Yale Daily News website
-        </StyledLink>. I'm a proud member of the{" "}
-        <StyledLink href="http://www.yalerussianchorus.org">
-          Yale Russian Chorus
-        </StyledLink>, and a former (but still proud) member of the{" "}
-        <StyledLink href="http://www.yaleballroom.org/">
-          Yale Ballroom Dance Team
-        </StyledLink>.
-        <br />
-        <br />
-        Last summer I was been lucky to be part of the team at{" "}
-        <StyledLink href="https://www.patientbank.us/">
-          PatientBank
-        </StyledLink>{" "}
-        (YC S16) and help build software that requests, stores, and manages
-        medical records for thousands of Americans.
-        <br />
-        <br />
-        What's next? I'll be heading to{" "}
-        <StyledLink href="https://www.facebook.com/">Facebook</StyledLink> soon
-        to work on{" "}
-        <StyledLink href="https://www.instagram.com/">Instagram</StyledLink>,
-        and after that I'll be interning at{" "}
-        <StyledLink href="https://blend.com/">Blend Labs</StyledLink>.
-      </IntroText>
-    </IntroContainer>
+    <ColorContainer />
+    <IntroText>
+      Hey there! I'm Eric, and I'm a student at Yale University studying
+      computer science. I love building things that help others.
+      <br />
+      <br />
+      At Yale, I've led student engineering teams to build our university's{" "}
+      <StyledLink href="http://map.yale.edu">CampusMap</StyledLink> and the{" "}
+      <StyledLink href="http://www.yaledailynews.com">
+        Yale Daily News website
+      </StyledLink>. I'm a proud member of the{" "}
+      <StyledLink href="http://www.yalerussianchorus.org">
+        Yale Russian Chorus
+      </StyledLink>, and a former (but still proud) member of the{" "}
+      <StyledLink href="http://www.yaleballroom.org/">
+        Yale Ballroom Dance Team
+      </StyledLink>.
+      <br />
+      <br />
+      Last summer I was been lucky to be part of the team at{" "}
+      <StyledLink href="https://www.patientbank.us/">
+        PatientBank
+      </StyledLink>{" "}
+      (YC S16) and help build software that requests, stores, and manages
+      medical records for thousands of Americans.
+      <br />
+      <br />
+      What's next? I'll be heading to{" "}
+      <StyledLink href="https://www.facebook.com/">Facebook</StyledLink> soon to
+      work on{" "}
+      <StyledLink href="https://www.instagram.com/">Instagram</StyledLink>, and
+      after that I'll be interning at{" "}
+      <StyledLink href="https://blend.com/">Blend Labs</StyledLink>.
+    </IntroText>
     <ContactContainer>
       <ContactHeading>Let's get in touch.</ContactHeading>
       <EmailContainer>
@@ -130,7 +139,7 @@ const IndexPage = () => (
         </a>
       </EmailContainer>
     </ContactContainer>
-  </FlexContainer>
+  </GridContainer>
 );
 
 export default IndexPage;
